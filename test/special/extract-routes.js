@@ -1,11 +1,11 @@
 'use strict'
 
-const test = require('tape')
-const spok = require('spok')
-const extractRoutes = require('../../lib/extract-routes')
+var test = require('tape')
+var spok = require('spok')
+var extractRoutes = require('../../lib/extract-routes')
 
 test('\nwhen I have a bunch of express routes it correctly extracts them', function (t) {
-  const app = require('express')()
+  var app = require('express')()
     .get('/', function (req, res) { })
     .post('/', function (req, res) { })
     .get('/admin', function (req, res) { })
@@ -16,7 +16,7 @@ test('\nwhen I have a bunch of express routes it correctly extracts them', funct
     .put('/nooo', function (req, res) { })
     .all('/all', function (req, res) { })
 
-  const res = extractRoutes(app, 'express')
+  var res = extractRoutes(app, 'express')
   spok(t, res, [
     { path: '/', methods: [ 'GET', 'POST' ] },
     { path: '/admin', methods: [ 'GET', 'POST' ] },

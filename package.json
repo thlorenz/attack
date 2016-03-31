@@ -2,7 +2,7 @@
   "name": "attack",
   "version": "0.0.0",
   "description": "Tool that surfaces problems in your application that render it insecure or may cause it to crash.",
-  "main": "index.js",
+  "main": "attack.js",
   "scripts": {
     "test": "tape test/*.js && make test-extract-routes"
   },
@@ -28,6 +28,6 @@
     "url": "https://github.com/thlorenz/attack/blob/master/LICENSE"
   },
   "engine": {
-    "node": ">=4"
+    "node": ">=0.10"
   }
 }
