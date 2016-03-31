@@ -1,0 +1,86 @@
+#!/usr/bin/env node
+
+'use strict'
+
+var path = require('path')
+var fs = require('fs')
+var minimist = require('minimist')
+
+var attack = require('../')
+
+function printUsageAndExit () {
+  // TODO
+  process.exit(1)
+}
+
+function tryReadJsonFile (p, type) {
+  var json
+  try {
+    json = fs.readFileSync(path.resolve(p), 'utf8')
+  } catch (e) {
+    console.error('Could not read ' + type + ' file!')
+    console.error(e)
+    printUsageAndExit()
+  }
+  try {
+    return JSON.parse(json)
+  } catch (e) {
+    console.error('Unable to parse config!')
+    console.error(e)
+    printUsageAndExit()
+  }
+}
+
+var argv = minimist(process.argv.slice(2),
+  { boolean: [ 'h', 'help' ],
+    string: [
+      'r', 'routes',
+      'c', 'config',
+      't', 'type',
+      'u', 'url'
+    ],
+    unknown: function unknown (a) {
+      return (a[0] === '-'
+        ? (console.error('Unknown option(s): ' + a), printUsageAndExit())
+        : true)
+    }
+})
+
+var routesFile = argv.r || argv.routes
+
+if (!routesFile) {
+  console.error('Need to supply routes file via --routes\n.' +
+                'Please learn here how to generate it: https://github.com/thlorenz/attack#attackwriteroutesapp-opts')
+  printUsageAndExit()
+}
+var routes = tryReadJsonFile(routesFile, 'routes')
+
+var url = argv.u || argv.url
+
+if (!url) {
+  console.error('Need to supply url via --url\n.')
+  printUsageAndExit()
+}
+
+var configFile = argv.c || argv.config
+var opts = {}
+
+if (configFile) {
+  opts = tryReadJsonFile(configFile, 'config')
+}
+
+var type = argv.t || argv.type || 'ab'
+var script
+switch (type) {
+  case 'ab': {
+    script = attack.ab(url, routes, opts)
+    break
+  }
+  default: {
+    console.error('Unknown attack type "' + type + '"!')
+    console.error('Known types are "ab", please supply a PR here to add more: https://github.com/thlorenz/attack')
+    printUsageAndExit()
+  }
+}
+
+console.log(script)
