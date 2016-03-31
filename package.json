@@ -2,9 +2,10 @@
   "name": "attack",
   "version": "0.0.0",
   "description": "Tool that surfaces problems in your application that render it insecure or may cause it to crash.",
-  "main": "attack.js",
+  "main": "@thlorenz/attack.js",
   "scripts": {
-    "test": "tape test/*.js && make test-extract-routes"
+    "test": "tape test/*.js && make test-extract-routes",
+    "docme": "docme Readme.md"
   },
   "repository": {
     "type": "git",
@@ -13,6 +14,7 @@
   "homepage": "https://github.com/thlorenz/attack",
   "dependencies": {},
   "devDependencies": {
+    "docme": "~0.3.0",
     "ocat": "~0.1.0",
     "spok": "~0.4.0",
     "tape": "~4.5.1"
