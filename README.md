@@ -13,6 +13,21 @@ var app = require('express')()
 attack.writeRoutes(app)
 ```
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Status](#status)
+- [Installation](#installation)
+- [API](#api)
+    - [attack::ab(root, routes, opts)](#attackabroot-routes-opts)
+    - [attack::writeRoutes(app, opts)](#attackwriteroutesapp-opts)
+- [Examples](#examples)
+  - [Express Example](#express-example)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Status
 
 Only express apps supported at the moment to have sitemap geneated.
@@ -215,6 +230,26 @@ ways that an application could be crashed.</p>
 *generated with [docme](https://github.com/thlorenz/docme)*
 </div>
 <!-- END docme generated API please keep comment here to allow auto update -->
+
+## Examples
+
+Try the examples here as follows:
+
+### Express Example
+
+```
+cd examples && npm install
+make express-app
+node express-app
+```
+
+In another terminal
+
+```
+sh express-app-attack.sh
+```
+
+Then watch your express app sputter error messages.
 
 ## License
 

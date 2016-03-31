@@ -1,2 +1,3 @@
 *.sh
-result.txt
+*.json
+*.txt
