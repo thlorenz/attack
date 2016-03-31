@@ -1,0 +1,42 @@
+[
+  {
+    "path": "/",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "path": "/admin",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "path": "/all",
+    "methods": [
+      "DELETE",
+      "GET",
+      "PATCH",
+      "POST",
+      "PUT"
+    ]
+  },
+  {
+    "path": "/duplicate",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "path": "/duplicate/:id",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "path": "/register-user",
+    "methods": [
+      "POST"
+    ]
+  }
+]
