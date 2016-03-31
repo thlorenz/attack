@@ -37,6 +37,90 @@ Only express apps supported at the moment to have sitemap geneated.
 </div>
 <dl>
 <dt>
+<h4 class="name" id="attack::ab"><span class="type-signature"></span>attack::ab<span class="signature">(root, routes, <span class="optional">opts</span>)</span><span class="type-signature"></span></h4>
+</dt>
+<dd>
+<div class="description">
+<p>Generates a shell script that runs various <strong>ab</strong> commands in order to expose
+ways that an application could be crashed.</p>
+</div>
+<h5>Parameters:</h5>
+<table class="params">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Argument</th>
+<th class="last">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="name"><code>root</code></td>
+<td class="type">
+<span class="param-type">String</span>
+</td>
+<td class="attributes">
+</td>
+<td class="description last"><p>root url of the server to attack, i.e. http://localhost:3000</p></td>
+</tr>
+<tr>
+<td class="name"><code>routes</code></td>
+<td class="type">
+<span class="param-type">Array.&lt;Object></span>
+</td>
+<td class="attributes">
+</td>
+<td class="description last"><p>collected via @see ./lib/write-routes.js</p></td>
+</tr>
+<tr>
+<td class="name"><code>opts</code></td>
+<td class="type">
+<span class="param-type">Object</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>options to tweak each attack</p>
+<h6>Properties</h6>
+<table class="params">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Argument</th>
+<th class="last">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="name"><code>invalidJson</code></td>
+<td class="type">
+<span class="param-type">Object</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>options to tweak the @see ./invalid-json.js attack</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="details">
+<dt class="tag-source">Source:</dt>
+<dd class="tag-source"><ul class="dummy">
+<li>
+<a href="https://github.com/thlorenz/attack/blob/master/attacks/ab/index.js">attacks/ab/index.js</a>
+<span>, </span>
+<a href="https://github.com/thlorenz/attack/blob/master/attacks/ab/index.js#L32">lineno 32</a>
+</li>
+</ul></dd>
+</dl>
+</dd>
+<dt>
 <h4 class="name" id="attack::writeRoutes"><span class="type-signature"></span>attack::writeRoutes<span class="signature">(app, <span class="optional">opts</span>)</span><span class="type-signature"></span></h4>
 </dt>
 <dd>
@@ -116,9 +200,9 @@ Only express apps supported at the moment to have sitemap geneated.
 <dt class="tag-source">Source:</dt>
 <dd class="tag-source"><ul class="dummy">
 <li>
-<a href="https://github.com/thlorenz/attack/blob/master/write-routes.js">write-routes.js</a>
+<a href="https://github.com/thlorenz/attack/blob/master/lib/write-routes.js">lib/write-routes.js</a>
 <span>, </span>
-<a href="https://github.com/thlorenz/attack/blob/master/write-routes.js#L8">lineno 8</a>
+<a href="https://github.com/thlorenz/attack/blob/master/lib/write-routes.js#L8">lineno 8</a>
 </li>
 </ul></dd>
 </dl>

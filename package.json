@@ -12,7 +12,10 @@
     "url": "git://github.com/thlorenz/attack.git"
   },
   "homepage": "https://github.com/thlorenz/attack",
-  "dependencies": {},
+  "dependencies": {
+    "handlebars": "~4.0.5",
+    "xtend": "~4.0.1"
+  },
   "devDependencies": {
     "docme": "~0.3.0",
     "ocat": "~0.1.0",
