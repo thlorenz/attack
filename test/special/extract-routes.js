@@ -5,17 +5,7 @@ var spok = require('spok')
 var extractRoutes = require('../../lib/extract-routes')
 
 test('\nwhen I have a bunch of express routes it correctly extracts them', function (t) {
-  var app = require('express')()
-    .get('/', function (req, res) { })
-    .post('/', function (req, res) { })
-    .get('/admin', function (req, res) { })
-    .post('/admin', function (req, res) { })
-    .get('/duplicate', function (req, res) { })
-    .get('/duplicate/:id', function (req, res) { })
-    .post('/foo', function (req, res) { })
-    .put('/nooo', function (req, res) { })
-    .all('/all', function (req, res) { })
-
+  var app = require('../util/express-app')
   var res = extractRoutes(app, 'express')
   spok(t, res, [
     { path: '/', methods: [ 'GET', 'POST' ] },
