@@ -28,8 +28,8 @@ var defaultJsonFiles = [
 
 var defaultOpts = {
   authorization: undefined,
-  concurrency: 10,
-  requests: 1000,
+  concurrency: 5,
+  requests: 50,
   url: undefined
 }
 

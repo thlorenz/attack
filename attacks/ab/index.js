@@ -52,9 +52,12 @@ exports = module.exports = function ab (root, routes, opts) {
     url = createUrl(root, route.path)
     for (var j = 0; j < route.methods.length; j++) {
       method = route.methods[j]
-      attacks += genInvalidJsonAttack(url, method, opts.invalidJson)
+      attacks += genInvalidJsonAttack(
+        url,
+        method,
+        xtend(opts.invalidJson, { method: method, path: route.path }))
     }
   }
 
-  return template({ attacks: attacks })
+  return template({ attacks: attacks }).replace(/&#x27;/g, "'")
 }

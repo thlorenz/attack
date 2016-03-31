@@ -1,4 +1,9 @@
 {{#each this.jsonFiles}}
+
+echo
+echo '## Invalid JSON: [{{../method}} {{../path}}] ({{../requests}}/{{../concurrency}})'
+echo '   Payload: {{this}}'
+echo
 ab -p {{this}} -T application/json {{#if ../authorization}}-H {{../authorization}}{{/if}}\
   -c {{../concurrency}} -n {{../requests}} {{../url}}
 {{/each}}
