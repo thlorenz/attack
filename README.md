@@ -21,6 +21,7 @@ attack.writeRoutes(app)
 - [Installation](#installation)
 - [API](#api)
     - [attack::ab(root, routes, opts)](#attackabroot-routes-opts)
+    - [attack::siege(root, routes, opts)](#attacksiegeroot-routes-opts)
     - [attack::writeRoutes(app, opts)](#attackwriteroutesapp-opts)
 - [Examples](#examples)
   - [Express Example](#express-example)
@@ -130,7 +131,67 @@ ways that an application could be crashed.</p>
 <li>
 <a href="https://github.com/thlorenz/attack/blob/master/attacks/ab/index.js">attacks/ab/index.js</a>
 <span>, </span>
-<a href="https://github.com/thlorenz/attack/blob/master/attacks/ab/index.js#L32">lineno 32</a>
+<a href="https://github.com/thlorenz/attack/blob/master/attacks/ab/index.js#L21">lineno 21</a>
+</li>
+</ul></dd>
+</dl>
+</dd>
+<dt>
+<h4 class="name" id="attack::siege"><span class="type-signature"></span>attack::siege<span class="signature">(root, routes, <span class="optional">opts</span>)</span><span class="type-signature"></span></h4>
+</dt>
+<dd>
+<div class="description">
+<p>Generates a urls file and an rc file for <a href="https://www.joedog.org/siege-manual/">siege</a>
+(brew install siege)</p>
+</div>
+<h5>Parameters:</h5>
+<table class="params">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Argument</th>
+<th class="last">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="name"><code>root</code></td>
+<td class="type">
+<span class="param-type">String</span>
+</td>
+<td class="attributes">
+</td>
+<td class="description last"><p>root url of the server to attack, i.e. http://localhost:3000</p></td>
+</tr>
+<tr>
+<td class="name"><code>routes</code></td>
+<td class="type">
+<span class="param-type">Array.&lt;Object></span>
+</td>
+<td class="attributes">
+</td>
+<td class="description last"><p>collected via @see ./lib/write-routes.js</p></td>
+</tr>
+<tr>
+<td class="name"><code>opts</code></td>
+<td class="type">
+<span class="param-type">Object</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>options to tweak each attack</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="details">
+<dt class="tag-source">Source:</dt>
+<dd class="tag-source"><ul class="dummy">
+<li>
+<a href="https://github.com/thlorenz/attack/blob/master/attacks/siege/index.js">attacks/siege/index.js</a>
+<span>, </span>
+<a href="https://github.com/thlorenz/attack/blob/master/attacks/siege/index.js#L26">lineno 26</a>
 </li>
 </ul></dd>
 </dl>
@@ -239,17 +300,17 @@ Try the examples here as follows:
 
 ```
 cd examples && npm install
-make express-sync-error
-node express-sync-error
+make ab-siege-async
+node express-async-error
 ```
 
 In another terminal
 
 ```
-sh express-sync-error-attack.sh
+sh siege-attack.sh && sh ab-attack.sh
 ```
 
-Then watch your express app sputter error messages.
+Then watch your express app crash after a bit.
 
 ## License
 

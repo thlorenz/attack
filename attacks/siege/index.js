@@ -23,6 +23,16 @@ var defaultOpts = {
   acceptEncoding: 'gzip'
 }
 
+/**
+ * Generates a urls file and an rc file for [siege](https://www.joedog.org/siege-manual/)
+ * (brew install siege)
+ *
+ * @name attack::siege
+ * @function
+ * @param {String} root root url of the server to attack, i.e. http://localhost:3000
+ * @param {Array.<Object>} routes collected via @see ./lib/write-routes.js
+ * @param {Object=} opts options to tweak each attack
+ */
 exports = module.exports = function siege (root, routes, opts) {
   opts = opts || {}
   var urls = createUrls(root, routes)
