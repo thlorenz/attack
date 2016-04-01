@@ -55,9 +55,11 @@ exports = module.exports = function ab (root, routes, opts) {
       attacks += genInvalidJsonAttack(
         url,
         method,
-        xtend(opts.invalidJson, { method: method, path: route.path }))
+        xtend(opts.invalidJson, { method: method, path: route.path, resultFile: opts.resultFile }))
     }
   }
 
-  return template({ attacks: attacks }).replace(/&#x27;/g, "'")
+  return template({ attacks: attacks })
+    .replace(/&#x27;/g, "'")
+    .replace(/&gt;/g, '>')
 }

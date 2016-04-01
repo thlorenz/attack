@@ -37,7 +37,8 @@ var argv = minimist(process.argv.slice(2),
       'r', 'routes',
       'c', 'config',
       't', 'type',
-      'u', 'url'
+      'u', 'url',
+      'o', 'output'
     ],
     unknown: function unknown (a) {
       return (a[0] === '-'
@@ -62,9 +63,10 @@ if (!url) {
   printUsageAndExit()
 }
 
-var configFile = argv.c || argv.config
-var opts = {}
+var resultFile = argv.o || argv.output || path.resolve('results.txt')
+var opts = {resultFile: resultFile}
 
+var configFile = argv.c || argv.config
 if (configFile) {
   opts = tryReadJsonFile(configFile, 'config')
 }

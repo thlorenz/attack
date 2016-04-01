@@ -1,3 +1,20 @@
 #!/bin/bash
 
+function log() {
+  local c=$1
+  local s=$2
+
+  nc='\033[0m'
+
+  case $c in
+
+    verb) color='\033[0;90m' ;;
+    info) color='\033[0;32m' ;;
+    err)  color='\033[0;31m' ;;
+    warn) color='\033[1;33m' ;;
+  esac
+
+  echo "\033[0;35mattack\033[0m ${color}$s${nc}"
+}
+
 {{attacks}}

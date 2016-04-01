@@ -1,9 +1,14 @@
 {{#each this.jsonFiles}}
 
+echo >> {{../resultFile}}
+echo '## Invalid JSON: [{{../method}} {{../path}}] ({{../requests}}/{{../concurrency}})' >> {{../resultFile}}
+echo '   Payload: {{this}}' >> {{../resultFile}}
+echo >> {{../resultFile}}
+
 echo
-echo '## Invalid JSON: [{{../method}} {{../path}}] ({{../requests}}/{{../concurrency}})'
-echo '   Payload: {{this}}'
+log info '## Invalid JSON: [{{../method}} {{../path}}] ({{../requests}}/{{../concurrency}})'
+log verb '   Payload: {{this}}'
 echo
 ab -p {{this}} -T application/json {{#if ../authorization}}-H {{../authorization}}{{/if}}\
-  -c {{../concurrency}} -n {{../requests}} {{../url}}
+-c {{../concurrency}} -n {{../requests}} {{../url}} >> {{../resultFile}}
 {{/each}}
