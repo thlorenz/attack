@@ -5,6 +5,7 @@
 var path = require('path')
 var fs = require('fs')
 var minimist = require('minimist')
+var xtend = require('xtend')
 
 var attack = require('../')
 
@@ -64,22 +65,22 @@ if (!url) {
 }
 
 var resultFile = argv.o || argv.output || path.resolve('results.txt')
-var opts = {resultFile: resultFile}
+var opts = { resultFile: resultFile }
 
 var configFile = argv.c || argv.config
 if (configFile) {
-  opts = tryReadJsonFile(configFile, 'config')
+  opts = xtend(opts, tryReadJsonFile(configFile, 'config'))
 }
 
 var type = argv.t || argv.type || 'ab'
 var script
 switch (type) {
   case 'ab': {
-    script = attack.ab(url, routes, opts)
+    script = attack.ab(url, routes, opts.ab)
     break
   }
   case 'siege': {
-    var rcFile = attack.siege(url, routes, opts)
+    var rcFile = attack.siege(url, routes, opts.siege)
     script = 'siege --rc ' + rcFile
     break
   }

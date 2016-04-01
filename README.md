@@ -116,14 +116,72 @@ ways that an application could be crashed.</p>
 </thead>
 <tbody>
 <tr>
-<td class="name"><code>invalidJson</code></td>
+<td class="name"><code>authorization</code></td>
 <td class="type">
-<span class="param-type">Object</span>
+<span class="param-type">String</span>
 </td>
 <td class="attributes">
 &lt;optional><br>
 </td>
-<td class="description last"><p>options to tweak the @see ./invalid-json.js attack</p></td>
+<td class="description last"><p>authorization string if required, i.e. 'Authorization: Token abcd1234'</p></td>
+</tr>
+<tr>
+<td class="name"><code>concurrency</code></td>
+<td class="type">
+<span class="param-type">Number</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>how many requests to fire in parallel, default: 5</p></td>
+</tr>
+<tr>
+<td class="name"><code>requests</code></td>
+<td class="type">
+<span class="param-type">Number</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>how many requests to fire, default: 50</p></td>
+</tr>
+<tr>
+<td class="name"><code>url</code></td>
+<td class="type">
+<span class="param-type">String</span>
+</td>
+<td class="attributes">
+</td>
+<td class="description last"><p>url at which to fire the requests</p></td>
+</tr>
+<tr>
+<td class="name"><code>resultFile</code></td>
+<td class="type">
+<span class="param-type">String</span>
+</td>
+<td class="attributes">
+</td>
+<td class="description last"><p>file to which ab results are piped</p></td>
+</tr>
+<tr>
+<td class="name"><code>keepAlive</code></td>
+<td class="type">
+<span class="param-type">Boolean</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>if true keep-alive is configured for ab, default: <code>true</code></p></td>
+</tr>
+<tr>
+<td class="name"><code>jsonFiles</code></td>
+<td class="type">
+<span class="param-type">Array.&lt;String>=</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>full paths to JSON files to use as tricky payloads on top of the ones included</p></td>
 </tr>
 </tbody>
 </table>
@@ -137,7 +195,7 @@ ways that an application could be crashed.</p>
 <li>
 <a href="https://github.com/thlorenz/attack/blob/master/attacks/ab/index.js">attacks/ab/index.js</a>
 <span>, </span>
-<a href="https://github.com/thlorenz/attack/blob/master/attacks/ab/index.js#L21">lineno 21</a>
+<a href="https://github.com/thlorenz/attack/blob/master/attacks/ab/index.js#L32">lineno 32</a>
 </li>
 </ul></dd>
 </dl>
@@ -187,7 +245,91 @@ ways that an application could be crashed.</p>
 <td class="attributes">
 &lt;optional><br>
 </td>
-<td class="description last"><p>options to tweak each attack</p></td>
+<td class="description last"><p>options to tweak each attack</p>
+<h6>Properties</h6>
+<table class="params">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Argument</th>
+<th class="last">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="name"><code>authorization</code></td>
+<td class="type">
+<span class="param-type">String</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>login/authorization string used in the .siegerc configuration, default: <code>undefined</code></p></td>
+</tr>
+<tr>
+<td class="name"><code>loginUrl</code></td>
+<td class="type">
+<span class="param-type">String</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>loginurl used in the .siegerc configuration, default: <code>undefined</code></p></td>
+</tr>
+<tr>
+<td class="name"><code>concurrency</code></td>
+<td class="type">
+<span class="param-type">Number</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>concurrency of requests send by siege for each url, default: <code>5</code></p></td>
+</tr>
+<tr>
+<td class="name"><code>requests</code></td>
+<td class="type">
+<span class="param-type">Number</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>number of requests send by siege for each url, default: <code>20</code></p></td>
+</tr>
+<tr>
+<td class="name"><code>keepAlive</code></td>
+<td class="type">
+<span class="param-type">Boolean</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>if true keep-alive is configured for siege, default: <code>true</code></p></td>
+</tr>
+<tr>
+<td class="name"><code>internet</code></td>
+<td class="type">
+<span class="param-type">Boolean</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>if true siege is configured to submit random requests (simulating internet usage), default: <code>true</code></p></td>
+</tr>
+<tr>
+<td class="name"><code>acceptEncoding</code></td>
+<td class="type">
+<span class="param-type">String</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>accept-encoding specified in .siegerc configuration, default: <code>'gzip'</code></p></td>
+</tr>
+</tbody>
+</table>
+</td>
 </tr>
 </tbody>
 </table>
@@ -197,7 +339,7 @@ ways that an application could be crashed.</p>
 <li>
 <a href="https://github.com/thlorenz/attack/blob/master/attacks/siege/index.js">attacks/siege/index.js</a>
 <span>, </span>
-<a href="https://github.com/thlorenz/attack/blob/master/attacks/siege/index.js#L26">lineno 26</a>
+<a href="https://github.com/thlorenz/attack/blob/master/attacks/siege/index.js#L24">lineno 24</a>
 </li>
 </ul></dd>
 </dl>

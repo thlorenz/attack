@@ -1,3 +1,4 @@
+/* eslint-disable comma-style, operator-linebreak, space-unary-ops, no-multi-spaces, key-spacing, indent */
 'use strict'
 
 var path = require('path')
@@ -26,14 +27,6 @@ var defaultJsonFiles = [
   'user-empty-string'
 ].map(fullPath)
 
-var defaultOpts = {
-  authorization: undefined,
-  concurrency: 5,
-  requests: 50,
-  keepAlive: false,
-  url: undefined
-}
-
 /**
  * Generates ab requests with invalid or tricky JSON payloads for the given url
  * Support POST and PUT methods
@@ -46,6 +39,7 @@ var defaultOpts = {
  * @param {Number=} opts.concurrency how many requests to fire in parallel, default: 10
  * @param {Number=} opts.requests how many requests to fire, default: 1000
  * @param {String} opts.url url at which to fire the requests
+ * @param {String} opts.resultFile file to which ab results are piped
  * @param {Array.<String>=} opts.jsonFiles full paths to JSON files to use as tricky payloads on top of the ones * included
  * @return {String} ab commands to be added to the attack shell script
  */
@@ -57,7 +51,7 @@ exports = module.exports = function invalidJson (opts) {
     ? defaultJsonFiles.concat(opts.jsonFiles)
     : defaultJsonFiles
 
-  opts = xtend({}, defaultOpts, opts, { jsonFiles: jsonFiles })
+  opts = xtend({}, opts, { jsonFiles: jsonFiles })
   if (!opts.url) throw new Error('Need url')
   return template(opts)
 }
