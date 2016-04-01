@@ -6,7 +6,7 @@ Tool that surfaces problems in your application that render it insecure or may c
 
 ```js
 // create sitemap of your server
-var attack = require('@thlorenz/attack')
+var attack = require('thlorenz-attack')
 var app = require('express')()
   .get('/', function index () { })
   .post('/other', function other () { })
@@ -41,7 +41,7 @@ Only express apps supported at the moment to have sitemap geneated.
 
 ## Installation
 
-    npm install @thlorenz/attack
+    npm install thlorenz-attack
 
 ## API
 
