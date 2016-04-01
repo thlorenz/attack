@@ -78,11 +78,15 @@ switch (type) {
     script = attack.ab(url, routes, opts)
     break
   }
+  case 'siege': {
+    var rcFile = attack.siege(url, routes, opts)
+    script = 'siege --rc ' + rcFile
+    break
+  }
   default: {
     console.error('Unknown attack type "' + type + '"!')
     console.error('Known types are "ab", please supply a PR here to add more: https://github.com/thlorenz/attack')
     printUsageAndExit()
   }
 }
-
 console.log(script)
