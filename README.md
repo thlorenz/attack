@@ -14,6 +14,10 @@ var app = require('express')()
 attack.writeRoutes(app)
 ```
 
+Then use the `attack` cli tool to generate **ab** and **siege** scripts to attack your server.
+
+More instructions on how to do that are coming, for now please [view the examples
+Makefile](https://github.com/thlorenz/attack/blob/master/examples/Makefile) to learn more.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
