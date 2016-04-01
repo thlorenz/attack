@@ -239,14 +239,14 @@ Try the examples here as follows:
 
 ```
 cd examples && npm install
-make express-app
-node express-app
+make express-sync-error
+node express-sync-error
 ```
 
 In another terminal
 
 ```
-sh express-app-attack.sh
+sh express-sync-error-attack.sh
 ```
 
 Then watch your express app sputter error messages.

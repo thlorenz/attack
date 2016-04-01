@@ -2,7 +2,7 @@
 
 var express = require('express')
 var app = express()
-  .use(require('body-parser')())
+  .use(require('body-parser').json())
   .get('/', function (req, res) {
     res.send('OK')
   })
@@ -19,6 +19,7 @@ var app = express()
     var name = req.body.user.name
     // express protects the app from blowing up entirely (https://github.com/expressjs/express/blob/f3d99a4fdbe1531ea609e92c4d4ae6c269d78c7a/lib/router/layer.js#L94-L98)
     // but once we reach the error handler we have less info about what happened
+    // For a crashing app see ./express-async-error.js
     res.send('OK - registered ' + name)
   })
   .all('/all', function (req, res) {
