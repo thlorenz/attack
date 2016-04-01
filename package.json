@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Tool that surfaces problems in your application that render it insecure or may cause it to crash.",
   "main": "attack.js",
+  "bin": "./bin/attack",
   "scripts": {
     "test": "tape test/*.js && make test-extract-routes",
     "docme": "docme Readme.md"
