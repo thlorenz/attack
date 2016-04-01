@@ -10,7 +10,7 @@ var xtend = require('xtend')
 var attack = require('../')
 
 function printUsageAndExit () {
-  // TODO
+  console.error(fs.readFileSync(path.join(__dirname, 'usage.txt'), 'utf8'))
   process.exit(1)
 }
 

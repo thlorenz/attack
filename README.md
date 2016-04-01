@@ -16,16 +16,13 @@ attack.writeRoutes(app)
 
 Then use the `attack` cli tool to generate **ab** and **siege** scripts to attack your server.
 
-The config you can pass looks as follows. It is best if you just copy it from
-[here](https://github.com/thlorenz/attack/blob/master/attacks/default-config.json) and then modify it to your
-liking.
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Status](#status)
 - [Installation](#installation)
+- [Usage](#usage)
 - [API](#api)
     - [attack::ab(root, routes, opts)](#attackabroot-routes-opts)
     - [attack::siege(root, routes, opts)](#attacksiegeroot-routes-opts)
@@ -43,6 +40,70 @@ Only express apps supported at the moment to have sitemap geneated.
 ## Installation
 
     npm install thlorenz-attack
+
+## Usage
+
+```
+usage: attack <attack-options>
+
+Surfaces problems in your application that render it insecure or may cause it to crash.
+Requires a routes file to have been generated, see https://github.com/thlorenz/attack#attackwriteroutesapp-opts
+
+OPTIONS:
+
+  -h, --help      Print this help message.
+  -c, --config    Overrides the default configuration for siege and ab
+                  The config file has this format:
+                  https://github.com/thlorenz/attack/blob/master/attacks/default-config.json 
+  -t, --type      Specifies which kind of attack to generate ('ab' | 'siege') 
+  -u, --url       Specifies the root url at which your server accepts requests (including port and protocol)
+                  i.e. http://localhost:5000
+  -o, --output    Specifies into which file to pipe the output of the 'ab' tool  
+
+
+EXAMPLES:
+
+Create an ab attack using the default options piping into results.txt
+
+  attack -r ./attack-routes.json -o results.txt -t ab -u http://localhost:5001 > attack.sh
+
+Create a siege attack using the default options
+
+	attack -r ./attack-routes.json -o results.txt -t siege -u http://localhost:5001 > siege-attack.sh &&\
+
+Create a siege attack using a custom config
+
+	attack -r ./attack-routes.json -c ./myconfig.json -o results.txt -t siege -u http://localhost:5001 > siege-attack.sh &&\
+
+Find more examples in the examples/Makefile at https://github.com/thlorenz/attack/blob/master/examples/Makefile
+```
+
+The config you can pass looks as follows. It is best if you just copy it from
+[here](https://github.com/thlorenz/attack/blob/master/attacks/default-config.json) and then modify it to your
+liking.
+
+```json
+{
+  "siege": {
+    "acceptEncoding": "gzip",
+    "authorization": null,
+    "concurrency": 5,
+    "internet": true,
+    "keepAlive": true,
+    "loginUrl": null,
+    "requests": 20
+  },
+  "ab": {
+    "authorization": null,
+    "concurrency": 5,
+    "jsonFiles": null, "//": "array of JSON file names to be used in Invalid JSON attack",
+    "keepAlive": false,
+    "requests": 50,
+    "url": null,
+    "resultFile": "ab-results.txt"
+  }
+}
+```
 
 ## API
 
