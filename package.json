@@ -1,6 +1,6 @@
 {
   "name": "thlorenz-attack",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Tool that surfaces problems in your application that render it insecure or may cause it to crash.",
   "main": "attack.js",
   "bin": {
