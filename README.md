@@ -16,8 +16,9 @@ attack.writeRoutes(app)
 
 Then use the `attack` cli tool to generate **ab** and **siege** scripts to attack your server.
 
-More instructions on how to do that are coming, for now please [view the examples
-Makefile](https://github.com/thlorenz/attack/blob/master/examples/Makefile) to learn more.
+The config you can pass looks as follows. It is best if you just copy it from
+[here](https://github.com/thlorenz/attack/blob/master/attacks/default-config.json) and then modify it to your
+liking.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -353,6 +354,11 @@ ways that an application could be crashed.</p>
 <p><strong>Warning</strong>: this function throws if the app's type cannot be detected
 <strong>Warning</strong>: this function synchronously writes the routes to the file system</p>
 <p>Therefore please run this only during server initialization <strong>after</strong> all routes were installed</p>
+<pre><code> var attack = require('thlorenz-attack')
+var app = require('express')()
+.get('/', function index () { })
+.post('/other', function other () { })
+attack.writeRoutes(app)</code></pre>
 </div>
 <h5>Parameters:</h5>
 <table class="params">
