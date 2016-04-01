@@ -2,6 +2,7 @@
 
 Tool that surfaces problems in your application that render it insecure or may cause it to crash.
 
+![assets/attack.gif](assets/attack.gif)
 
 ```js
 // create sitemap of your server
@@ -12,6 +13,7 @@ var app = require('express')()
 
 attack.writeRoutes(app)
 ```
+
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
