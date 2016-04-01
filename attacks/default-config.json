@@ -1,0 +1,20 @@
+{
+  "siege": {
+    "acceptEncoding": "gzip",
+    "authorization": null,
+    "concurrency": 5,
+    "internet": true,
+    "keepAlive": true,
+    "loginUrl": null,
+    "requests": 20
+  },
+  "ab": {
+    "authorization": null,
+    "concurrency": 5,
+    "jsonFiles": null,
+    "keepAlive": false,
+    "requests": 50,
+    "url": null,
+    "resultFile": "ab-results.txt"
+  }
+}
