@@ -6,7 +6,7 @@ var app = express()
   .get('/', function (req, res) {
     res.send('OK')
   })
-  .get('/admin', function (req, res) {
+  .put('/admin', function (req, res) {
     res.send('OK')
   })
   .get('/duplicate', function (req, res) {

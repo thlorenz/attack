@@ -9,6 +9,6 @@ echo
 log info '## Invalid JSON: [{{../method}} {{../path}}] ({{../requests}}/{{../concurrency}})'
 log verb '   Payload: {{this}}'
 echo
-ab -p {{this}} -T application/json {{#if ../authorization}}-H {{../authorization}}{{/if}}\
--c {{../concurrency}} -n {{../requests}} {{../url}} >> {{../resultFile}}
+ab {{#if ../put}}-u{{else}}-p{{/if}} {{this}} -T application/json {{#if ../authorization}}-H {{../authorization}}{{/if}}\
+{{#if ../keepAlive}} -k{{/if}} -c {{../concurrency}} -n {{../requests}} {{../url}} >> {{../resultFile}}
 {{/each}}

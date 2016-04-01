@@ -55,7 +55,12 @@ exports = module.exports = function ab (root, routes, opts) {
       attacks += genInvalidJsonAttack(
         url,
         method,
-        xtend(opts.invalidJson, { method: method, path: route.path, resultFile: opts.resultFile }))
+        xtend(opts.invalidJson, {
+          method: method,
+          put: method === 'PUT',
+          path: route.path,
+          resultFile: opts.resultFile
+        }))
     }
   }
 

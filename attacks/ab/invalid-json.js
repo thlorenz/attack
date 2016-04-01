@@ -30,6 +30,7 @@ var defaultOpts = {
   authorization: undefined,
   concurrency: 5,
   requests: 50,
+  keepAlive: false,
   url: undefined
 }
 
