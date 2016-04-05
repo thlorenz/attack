@@ -12,6 +12,11 @@ express-async-error:
 	node ../bin/attack -r ./attack-routes.json -o async-results.txt -t ab -u http://localhost:5002 > ab-attack.sh &&\
 	echo "Now run 'node express-async-error' and 'sh ab-attack.sh' script in another terminal."
 
+restify-async-error:
+	ROUTES_ONLY=1 node ./restify-async-error.js &&\
+	node ../bin/attack -r ./attack-routes.json -o async-results.txt -t ab -u http://localhost:5003 > ab-attack.sh &&\
+	echo "Now run 'node restify-async-error' and 'sh ab-attack.sh' script in another terminal."
+
 siege-sync:
 	ROUTES_ONLY=1 node ./express-sync-error.js &&\
 	node ../bin/attack -r ./attack-routes.json -o sync-results.txt -t siege -u http://localhost:5001 > siege-attack.sh &&\

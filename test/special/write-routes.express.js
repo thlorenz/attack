@@ -11,6 +11,7 @@ var file = path.join(__dirname, '..', 'results', 'attack-routes.json')
 function removeFile () {
   if (exists(file)) fs.unlinkSync(file)
 }
+
 test('\nsetup', function (t) {
   removeFile()
   t.end()

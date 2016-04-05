@@ -19,3 +19,17 @@ test('\nwhen I have a bunch of express routes it correctly extracts them', funct
   )
   t.end()
 })
+
+test('\nwhen I have some restify routes it correctly extracts them', function (t) {
+  var app = require('../util/restify-app')
+  var res = extractRoutes(app, 'restify')
+  spok(t, res, [
+    { path: '/', methods: [ 'GET', 'POST' ] },
+    { path: '/admin', methods: [ 'GET', 'POST' ] },
+    { path: '/duplicate', methods: [ 'GET' ] },
+    { path: '/duplicate/:id', methods: [ 'GET' ] },
+    { path: '/foo', methods: [ 'POST' ] },
+    { path: '/nooo', methods: [ 'PUT' ] } ]
+  )
+  t.end()
+})
