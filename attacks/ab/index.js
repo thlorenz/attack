@@ -66,7 +66,7 @@ exports = module.exports = function ab (root, routes, opts) {
             method : method
           , put    : method === 'PUT'
           , path   : route.path
-          , url    : root
+          , url    : createUrl.ensureEndSlash(root + route.path)
         }))
     }
   }
@@ -74,5 +74,8 @@ exports = module.exports = function ab (root, routes, opts) {
   return template({ attacks: attacks })
     .replace(/&#x27;/g, "'")
     .replace(/&gt;/g, '>')
+}
+function inspect (obj, depth) {
+  console.error(require('util').inspect(obj, false, depth || 5, true))
 }
 exports._defaultOpts = defaultOpts
